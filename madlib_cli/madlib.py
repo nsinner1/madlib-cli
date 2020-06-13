@@ -12,7 +12,7 @@ def read(txt):
     """function for opening/reading madlib.txt"""
     with open(txt, 'r') as f:
         contents = f.read()
-        print(contents)
+        # print(contents)
         return contents 
 
 
@@ -20,6 +20,7 @@ read('asset/madlib.txt')
 
 
 def list_of_words():
+    """pulls out the madlib words"""
     with open('asset/madlib.txt') as template:
         content = template.read()
         word_list = []
@@ -30,9 +31,27 @@ def list_of_words():
             last_word = content.find('}', first_word)
             text = content[first_word : last_word]
             word_list.append(text)
-    print(word_list)
-list_of_words()
+    # print(word_list)
+    return word_list
+question = list_of_words()
+# print(question)
 
 
+def get_input(question):
+    """asks user input for madlib words"""
+    words = []
+    for element in question:
+        word = input(f'Please give me {element}: ')
+        words.append(word)
+    return words
+
+answer = get_input(question)
+# print(answer)
+
+def write_input(new_template):
+    with open('txt', 'w') as final_text:
+        final_text.write(new_template)
+        print(new_template)
+    
 
 
